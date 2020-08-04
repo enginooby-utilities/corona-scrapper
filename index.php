@@ -1,10 +1,30 @@
+<!-- SCRAP DATA -->
+<?php
+if ($_GET) {
+    // replace space with "-" to match with the URL of the Web target
+    $keyword = str_replace(" ","-",$_GET["country"]); 
+
+    $resultPage = file_get_contents("https://www.worldometers.info/coronavirus/country/" .$keyword);
+    $pageArray = explode('<span style="color:#aaa">', $resultPage);
+
+    $secondPageArray = explode('</span>', $pageArray[1]);
+    $caseNumber = $secondPageArray[0];
+
+    $thirdPageArray = explode('<span>', $secondPageArray[1]);
+    $deathNumber = $thirdPageArray[1];
+
+    $fourthPageArray = explode('<span>', $secondPageArray[2]);
+    $recoveryNumber = $fourthPageArray[1];
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -13,18 +33,53 @@
   <title>Corona Cheker</title>
   <style>
     html {
-      background: url(images/bg.jfif) no-repeat center center fixed;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/bg.jfif) no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
     }
+
+    body {
+      background: none;
+    }
+
+    .container {
+      color: white;
+      text-align: center;
+      margin-top: 10%;
+      width: 650px;
+    }
+
+    label.form-control {
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    input {
+      margin-top: 20px;
+    }
   </style>
 </head>
 
 <body>
-  <h1>Hello, Corona!</h1>
 
+  <div class="container">
+    <div class="display-4">How many Corona cases?</div>
+
+    <form method="get">
+      <div class="form-group">
+        <label for="country" class="form-control">Enter a country</label>
+        <input type="text" name="country" id="country" class="form-control" placeholder="E.g. Viet Nam, Poland, US...">
+      </div>
+      <button type="submit" class="btn btn-primary">Check</button>
+    </form>
+
+    <!-- RESULT -->
+    <br>
+    <?php include "result.php" ?>
+  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
