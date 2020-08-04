@@ -24,13 +24,13 @@ if ($_GET) {
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-  <title>Corona Cheker</title>
+  <title>Corona Checker</title>
   <style>
     html {
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/bg.jfif) no-repeat center center fixed;
@@ -48,7 +48,7 @@ if ($_GET) {
       color: white;
       text-align: center;
       margin-top: 10%;
-      width: 650px;
+      width: 500px;
     }
 
     label.form-control {
@@ -59,6 +59,14 @@ if ($_GET) {
 
     input {
       margin-top: 20px;
+    }
+
+    .display-4 {
+      font-size: 43px;
+    }
+
+    .alert {
+      opacity: 0.85;
     }
   </style>
 </head>
