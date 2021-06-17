@@ -1,1 +1,0 @@
-# corona-scraper-website
