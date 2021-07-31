@@ -1,27 +1,3 @@
-<!-- SCRAP DATA -->
-<?php
-// hide error on web page
-error_reporting(0);
-ini_set('display_errors', 0);
-
-if ($_GET) {
-        // replace space with "-" to match with the URL of the Web target
-        $keyword = str_replace(" ", "-", $_GET["country"]);
-
-        $resultPage = file_get_contents("https://www.worldometers.info/coronavirus/country/" . $keyword);
-        $pageArray = explode('<span style="color:#aaa">', $resultPage);
-
-        $secondPageArray = explode('</span>', $pageArray[1]);
-        $caseNumber = $secondPageArray[0];
-
-        $thirdPageArray = explode('<span>', $secondPageArray[1]);
-        $deathNumber = $thirdPageArray[1];
-
-        $fourthPageArray = explode('<span>', $secondPageArray[2]);
-        $recoveryNumber = $fourthPageArray[1];
-}
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -90,13 +66,16 @@ if ($_GET) {
                                                 <input type="text" name="country" id="country" class="form-control my-4" placeholder="E.g. Viet Nam, Poland, US...">
                                         </div>
                                         <div class="button-border">
-                                                <button type="submit" class="btn button px-3 py-2">Check <i class="fas fa-search"></i></button>
+                                                <a href="javascript:;" class="btn button px-3 py-2" id="check-button">Check <i class="fas fa-search"></i></a>
                                         </div>
                                 </form>
 
                                 <!-- RESULT -->
                                 <br>
-                                <?php include "result.php" ?>
+                                <div id="result-section">
+
+                                </div>
+                                <!-- <?php include "result.php" ?> -->
                         </div>
                 </div>
         </div>
@@ -107,6 +86,26 @@ if ($_GET) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js" integrity="sha512-+aXA9mgbUvFe0ToTlbt8/3vT7+nOgUmFw29wfFCsGoh8AZMRSU0p4WtOvC1vkF2JBrndPN2TuNZsHPAKPPxe8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script async src="../../dynamic-ui-framework/js/DynamicTheme.js" type="module"></script>
+
+        <script>
+                $countryInput = $("#country");
+                $resultSection = $("#result-section");
+
+                $('#check-button').on('click', () => {
+                        const countryName = $countryInput.val();
+
+                        $.ajax({
+                                url: "scrap-data.php",
+                                type: "get",
+                                data: {
+                                        country: countryName,
+                                },
+                                success: function(result) {
+                                        $resultSection.html(result);
+                                }
+                        });
+                })
+        </script>
 </body>
 
 </html>
