@@ -1,30 +1,33 @@
 <?php
-if ($_GET&&$caseNumber){
-    echo "<h3>".$_GET["country"]."</h3>";
-    echo 
-    '<div class="row">
-    <div class="col">
-      <div class="alert alert-warning" role="alert">
-        <b>Total</b><br>
-        '.$caseNumber.'
+if ($_GET && $caseNumber) {
+        echo "<h4>" . $_GET["country"] . "</h4>";
+        echo
+        '<div class="row mt-4">
+    <div class="col-4">
+    <div class="box-border">
+      <div class="alert  background-colorfull2" role="alert">
+              <b>Total</b><br>
+        ' . $caseNumber . '
+      </div>
       </div>
     </div>
-    <div class="col">
-      <div class="alert alert-danger" role="alert">
+    <div class="col-4">
+        <div class="box-border">
+      <div class="alert background-colorfull3" role="alert">
         <b>Deaths</b><br>
-        '.$deathNumber.'
+        ' . $deathNumber . '
       </div>
+            </div>
     </div>
-    <div class="col">
-      <div class="alert alert-success" role="alert">
+    <div class="col-4">
+            <div class="box-border">
+      <div class="alert  background-colorfull1" role="alert">
         <b>Recovered</b><br>
-        '.$recoveryNumber.'
+        ' . $recoveryNumber . '
       </div>
+                  </div>
     </div>
   </div>';
-
-} elseif($_GET&&!$caseNumber) {
-    echo "<h3>No result</h3>";
+} elseif ($_GET && !$caseNumber) {
+        echo "<h4>No result</h4>";
 }
-
-?>
