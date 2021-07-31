@@ -41,7 +41,7 @@ if ($_GET) {
         <!-- Override Dynamic Framework Style -->
         <style>
                 /* TODO: Improve Dynamic Framework so that don't need to do this */
-                body {
+                .custom-background {
                         background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/bg.jfif) no-repeat center center fixed;
                         -webkit-background-size: cover;
                         -moz-background-size: cover;
@@ -79,7 +79,7 @@ if ($_GET) {
         </style>
 </head>
 
-<body class="neu-style">
+<body class="glass-style custom-background">
         <div class="display-table">
                 <div class="display-content ">
                         <div class="container text-center">
