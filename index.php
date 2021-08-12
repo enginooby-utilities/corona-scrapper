@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
         <title>Corona Checker</title>
-        <link rel="stylesheet" href="../../dynamic-ui-framework/css/dynamic-style.css" type="text/css">
+        <link rel="stylesheet" href="../../dui/css/dynamic-style.css" type="text/css">
         <!-- Override Dynamic Framework Style -->
         <style>
                 /* TODO: Improve Dynamic Framework so that don't need to do this */
@@ -69,13 +69,13 @@
         </div>
 
         <!-- SCENARIO: project script uses jQuery -->
-        <!-- Option 1: defer to jQuery normally => framework skips loadding jQuery-->
+        <!-- Option 1: refer to jQuery & project script normally => framework skips loadding jQuery-->
         <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="./main.js"></script> -->
         <!-- Option 2:  use a placeholder script tag with data-src attr => framework async  loads jQuery then this script-->
         <script data-src="./main.js" data-dependency="jquery"></script>
 
-        <script async src="../../dynamic-ui-framework/js/main.js" type="module"></script>
+        <script async src="../../dui/js/main.js" type="module"></script>
 </body>
 
 </html>
